@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://neafyrt5gjco"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2mc80"]
+
+[node name="ball" type="RigidBody3D" unique_id=1809361538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1744399314]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_2mc80")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2116445643]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

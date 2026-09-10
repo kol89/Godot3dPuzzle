@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="PackedScene" uid="uid://ypv1r7h38spy" path="res://maze.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dusuvyhnm1ysr" path="res://controls.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://neafyrt5gjco" path="res://ball.tscn" id="3_h2yge"]
+
+[node name="main" type="Node3D" unique_id=1515656472]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=811361407]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.053, 1.8785266, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=257932957]
+transform = Transform3D(0.9713428, 0.13750201, -0.19387177, -2.3282902e-10, 0.81567484, 0.5785109, 0.23768269, -0.5619324, 0.7922998, 0, 3.5472739, 3.707144)
+
+[node name="maze" parent="." unique_id=1675661451 instance=ExtResource("1_ig7tw")]
+script = ExtResource("2_0xm2m")
+
+[node name="ball" parent="." unique_id=1809361538 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6789117, 0)

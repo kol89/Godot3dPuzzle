@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ypv1r7h38spy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2mc80"]
+
+[node name="maze" type="RigidBody3D" unique_id=1675661451]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1898016156]
+shape = SubResource("BoxShape3D_2mc80")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1411940077]
