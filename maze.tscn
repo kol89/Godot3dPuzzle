@@ -2,11 +2,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ds4m"]
 
-[node name="maze" type="RigidBody3D" unique_id=588988014]
-freeze = true
-freeze_mode = 1
+[node name="AnimatableBody3D" type="AnimatableBody3D" unique_id=1576744289]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1179882694]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=193578136]
 shape = SubResource("BoxShape3D_2ds4m")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1457992950]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1289675434]

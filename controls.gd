@@ -1,5 +1,5 @@
 extends Node
-@onready var maze: RigidBody3D = $"."
+@onready var maze: AnimatableBody3D = $"."
 const rotation_limit = 0.5
 const rotation_speed = 1
 var RotX: float
@@ -16,30 +16,32 @@ func rotationLimiter() -> void:
 	if maze.rotation.z < -rotation_limit:
 		maze.rotation.z = -rotation_limit
 
-# Called when the node enters the scene tree for the first time.
+	
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _unhandled_key_input(event):
-	if !event.is_pressed(): 
-		RotX = 0
-		RotZ = 0
-		print(snap)
-		maze.rotation.x /= snap
-		maze.rotation.z /= snap
-		if maze.rotation<=Vector3(0.0001, 0.0001, 0.0001) and maze.rotation>=Vector3(-0.0001, -0.0001, -0.0001):
-			maze.rotation = Vector3(0,0,0)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var any_key_pressed = false
+
 	if Input.is_action_pressed("left"):
-		maze.rotation += get_process_delta_time() * Vector3(0,0,rotation_speed)
+		maze.rotation.z += delta * rotation_speed
+		any_key_pressed = true
 	if Input.is_action_pressed("right"):
-		maze.rotation += get_process_delta_time() * Vector3(0,0,-rotation_speed)
+		maze.rotation.z -= delta * rotation_speed
+		any_key_pressed = true
 	if Input.is_action_pressed("up"):
-		maze.rotation += get_process_delta_time() * Vector3(-rotation_speed,0,0)
+		maze.rotation.x -= delta * rotation_speed
+		any_key_pressed = true
 	if Input.is_action_pressed("down"):
-		maze.rotation += get_process_delta_time() * Vector3(rotation_speed,0,0)
-	print(maze.rotation_degrees.x,"", maze.rotation_degrees.z)
+		maze.rotation.x += delta * rotation_speed
+		any_key_pressed = true
+	if not any_key_pressed:
+		maze.rotation.x /= snap
+		maze.rotation.z /= snap
+		if abs(maze.rotation.x) < 0.0001:
+			maze.rotation.x = 0
+		if abs(maze.rotation.z) < 0.0001:
+			maze.rotation.z = 0
 	rotationLimiter()
 	
