@@ -22,26 +22,26 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var any_key_pressed = false
+	var any_key_pressed = (Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("up") or Input.is_action_pressed("down"))
 
 	if Input.is_action_pressed("left"):
 		maze.rotation.z += delta * rotation_speed
-		any_key_pressed = true
 	if Input.is_action_pressed("right"):
 		maze.rotation.z -= delta * rotation_speed
-		any_key_pressed = true
 	if Input.is_action_pressed("up"):
 		maze.rotation.x -= delta * rotation_speed
-		any_key_pressed = true
 	if Input.is_action_pressed("down"):
 		maze.rotation.x += delta * rotation_speed
-		any_key_pressed = true
+		
+	rotationLimiter()
 	if not any_key_pressed:
+		print("nothing is pressed")
 		maze.rotation.x /= snap
 		maze.rotation.z /= snap
-		if abs(maze.rotation.x) < 0.0001:
+		if abs(maze.rotation.x) < 0.01:
 			maze.rotation.x = 0
-		if abs(maze.rotation.z) < 0.0001:
+		if abs(maze.rotation.z) < 0.01:
 			maze.rotation.z = 0
-	rotationLimiter()
+	else:
+		print("something is pressed")
 	
